@@ -1,0 +1,15 @@
+#nav{
+  li {
+    line-height: 61px;
+    background: #041527;
+    }
+   a {
+     color: white;
+     &:hover{
+       color: #1890ff;
+     }
+   }
+   .ant-menu-item-selected a {
+      color:#1890ff;
+   }
+}

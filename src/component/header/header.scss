@@ -1,0 +1,21 @@
+#header {
+  height: 64px;
+  >.row{
+    display: flex;
+    justify-content: center;
+    .logo{
+      margin: 0 60px;
+      text-align: center;
+      h1{color: white;}
+    }   
+    .divider{
+      color: white;
+      height: 64px;
+      }
+    .nav{
+      display: flex;
+      align-items: center;
+      height: 64px;
+    }
+  }
+}
