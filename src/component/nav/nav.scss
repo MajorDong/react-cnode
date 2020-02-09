@@ -1,14 +1,21 @@
 #nav{
-  li {
-    line-height: 61px;
-    background: #041527;
-    }
-   a {
-     color: white;
-     &:hover{
-       color: #1890ff;
+  background: none;
+  border: #041527;
+  
+  @media(min-width: 712px) {
+    a {
+      line-height: 62px;
+      color: white;
+       &:hover{
+         color: #1890ff;
+       }
      }
-   }
+  }
+   @media(max-width: 375px) {
+    a {
+      color: #595959;
+    }
+  }
    .ant-menu-item-selected a {
       color:#1890ff;
    }

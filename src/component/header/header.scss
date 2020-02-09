@@ -2,20 +2,23 @@
   height: 64px;
   >.row{
     display: flex;
-    justify-content: center;
     .logo{
-      margin: 0 60px;
       text-align: center;
       h1{color: white;}
     }   
-    .divider{
-      color: white;
-      height: 64px;
-      }
     .nav{
-      display: flex;
-      align-items: center;
-      height: 64px;
+      height: 64px;;
+    }
+    .minNav{
+      position: absolute;
+      right: -50px;
+      top: 4px;
+      width: auto;
+      .icon {
+        background: #041527;
+        padding-bottom: 12px;
+        padding-right: 13px;
+      }
     }
   }
 }
