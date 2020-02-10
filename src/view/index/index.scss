@@ -1,5 +1,43 @@
 #index{
-  >.menu{
-    
+  padding: 0 100px;
+  .menu{
+    border-right: none;
+    text-align: center;
+    .ant-menu-item-active{
+      border-right: 3px solid #1890ff;
+    }
+    .ant-menu-item-selected{
+      border-right: 3px solid #1890ff;
+    }
   }
+  .art{
+    border-left: 1px solid #ccc;
+  }
+
 }
+@media all and (max-width: 767px) {
+  #index{
+    padding: 0;
+    .menuWrap{
+      width: 100%;
+      margin-top: -3px;
+      .menu{
+        display: flex;
+        height: 42px;
+        justify-content: center;
+        border: 1px solid #ccc;
+        li{
+          margin: 0;
+        }
+        .ant-menu-item-active{
+          border-right: none;
+          border-bottom: 3px solid #1890ff;
+        }
+        .ant-menu-item-selected{
+          border-right: none;
+          border-bottom: 3px solid #1890ff;
+        }
+      }
+    }
+  }    
+} 
