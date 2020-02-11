@@ -7,7 +7,7 @@ export default class Footer extends Component{
             <Layout.Footer id="footer" style={
               {textAlign: "center",}
             }>
-                Copyright ©️2019-present Tom Shen
+                <div>Copyright <span role="img">©️</span>2019-present Tom Shen</div>
             </Layout.Footer>
         );
     }

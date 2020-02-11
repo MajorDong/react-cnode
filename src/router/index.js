@@ -10,9 +10,9 @@ function RouteIndex(){
   return (
     <Switch>
       <Route path="/" exact>
-        <Redirect to="/index/" />
+        <Redirect to="/index/all" />
       </Route>
-      <Route path="/index" component={Index} />
+      <Route path="/index/:id" component={Index} />
       <Route path="/detail" component={Detail} />
       <Route path="/user" component={User} />
       <Route path="/about" component={About} />
