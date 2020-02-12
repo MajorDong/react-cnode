@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, } from "react-router-dom"
 import { Menu, Row, Col } from 'antd'
-import IndexList from './indexlist'
+import IndexList from '../../component/indexList/indexlist'
 import './index.scss'
 
 class Index extends React.Component {

@@ -2,7 +2,7 @@ import React from 'react';
 import Axios from 'axios'
 import { List ,Avatar} from 'antd'
 import { Link} from 'react-router-dom'
-import TxtTag from '../../component/tags/tags'
+import TxtTag from '../tags/tags'
 import './indexlist.scss'
 
 
@@ -21,6 +21,7 @@ class IndexList extends React.Component {
         dataSource={this.state.data}
         renderItem={(item) => (<List.Item
           actions={[`回复:${item.reply_count}`,`访问:${item.visit_count}`]}
+          key={item.id}
         >
           <List.Item.Meta
             avatar={<Avatar src={item.author.avatar_url} />}
@@ -29,6 +30,7 @@ class IndexList extends React.Component {
               <Link to={`/user/${item.author.loginname}`}>
                 {item.author.loginname}
               </Link>
+              <span>&nbsp;</span>
               发表于：{item.create_at.split('T')[0]}
             </p>}
           />
