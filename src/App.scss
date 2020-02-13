@@ -5,13 +5,15 @@
   box-sizing: border-box;
 }
 #app {
+  img{
+    max-width: 100%;
+  }
   height: 100vh;
   display: flex;
   flex-direction: column;
   .main{
     flex-grow: 1;
-    width: 80%;
-    margin: 0 auto;
+    width: 100%;
   }
 }
 

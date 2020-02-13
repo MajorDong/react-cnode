@@ -3,6 +3,7 @@ import { Card, Avatar } from 'antd';
 import { Link } from 'react-router-dom'
 import Axios from 'axios'
 import TxtTag from '../../component/tags/tags'
+import ReplyList from '../../component/replylist/replylist'
 import './detail.scss'
 
 class Detail extends React.Component {
@@ -42,6 +43,12 @@ class Detail extends React.Component {
               }
             }
           ></div>
+        </Card>
+        <Card
+          type="inner"
+          title={`共有${data.replies && data.replies.length}条回复`}
+        >
+          <ReplyList data={data.replies && data.replies}/>
         </Card>
       </div>
     );
