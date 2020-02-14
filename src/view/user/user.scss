@@ -1,0 +1,16 @@
+.userWrap{
+  width: 80%;
+  margin: 0 auto;
+  .userInfo{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #cccccc;
+    border-bottom: none;
+    padding-bottom: 7px;
+    .userAvatar{
+      width: 100px;
+      height: 100px;
+      margin: 30px auto;
+    }
+  }
+}
