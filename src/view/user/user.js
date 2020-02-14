@@ -1,6 +1,7 @@
 import React from 'react';
 import { Avatar, Row, Col, Card} from 'antd'
 import data from './data'
+import UserList from '../../component/userlist/userlist'
 import './user.scss'
 
 const dataStyle = {
@@ -9,7 +10,9 @@ const dataStyle = {
 class User extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {  }
+    this.state = { 
+      listLoading: true
+     }
   }
   render() { 
     console.log(data)
@@ -27,7 +30,15 @@ class User extends React.Component {
         <Card
           type="inner"
           title="最近创建话题"
-        ></Card>
+        >
+          <UserList data={data.data.recent_topics}/>
+        </Card>
+        <Card
+          type="inner"
+          title="最近回复的话题"
+        >
+          <UserList data={data.data.recent_replies}/>
+        </Card>
       </div>
      );
   }
