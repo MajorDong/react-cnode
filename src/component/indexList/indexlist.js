@@ -1,5 +1,4 @@
 import React from 'react';
-import Axios from 'axios'
 import { List ,Avatar} from 'antd'
 import { Link} from 'react-router-dom'
 import TxtTag from '../tags/tags'
@@ -10,15 +9,15 @@ class IndexList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: true,
-      data: []
+
     }
   }
   render() {
+    // loading data
     return (
       <List id="indexList"
-        loading={this.state.loading}
-        dataSource={this.state.data}
+        loading={this.props.loading}
+        dataSource={this.props.data}
         renderItem={(item) => (<List.Item
           actions={[`回复:${item.reply_count}`,`访问:${item.visit_count}`]}
           key={item.id}
@@ -37,30 +36,10 @@ class IndexList extends React.Component {
         </List.Item>)
         }
       >
-
       </List>
     );
   }
-  getData = () => {
-    Axios.get("https://cnodejs.org/api/v1/topics", {
-      params: {
-        page: 1,
-        limit: 20,
-      }
-    })
-      .then(res => {
-        this.setState({
-          data: res.data.data,
-          loading: false
-        })
-      })
-      .catch(err => {
-        console.log(err)
-      })
-  }
-  componentDidMount() {
-    this.getData()
-  }
+  
 }
 
 

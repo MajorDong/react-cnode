@@ -2,6 +2,9 @@ import React from 'react';
 import { Link, } from "react-router-dom"
 import { Menu, Row, Col } from 'antd'
 import IndexList from '../../component/indexList/indexlist'
+import {bindActionCreators} from 'redux'
+import { connect } from 'react-redux'
+import fetchList from '../../actions/indexList'
 import './index.scss'
 
 class Index extends React.Component {
@@ -10,6 +13,7 @@ class Index extends React.Component {
     this.state = {}
   }
   render() {
+    console.log(this.props)
     return (
       <Row id="index">
         <Col md={5} >
@@ -38,12 +42,34 @@ class Index extends React.Component {
         </Col>
         <Col md={19} xs={24}>
           <div className="artList">
-            <IndexList/>
+            <IndexList data={this.props.list} loading={this.props.isloading}/>
           </div>
         </Col>
       </Row>
     );
   }
+  componentDidUpdate(prevProps){
+    let tab =this.props.match.params.id
+    if(tab !== prevProps.match.params.id){
+      this.props.fetchList(tab)
+    }
+  }
+  componentDidMount(){
+    let tab =this.props.match.params.id
+    this.props.fetchList(tab)
+  }
 }
 
-export default Index;
+const mapStateToProps = (state) => {
+  return { 
+    list: state.indexList.data,
+    isloading: state.indexList.isloading
+  } 
+}
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({ fetchList },dispatch)
+}
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Index);

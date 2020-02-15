@@ -15,7 +15,6 @@ class User extends React.Component {
      }
   }
   render() { 
-    console.log(data)
     let {loginname, avatar_url, score, create_at} = data.data
     return ( 
       <div className="userWrap">
