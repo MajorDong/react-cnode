@@ -13,7 +13,6 @@ class Index extends React.Component {
     this.state = {}
   }
   render() {
-    console.log(this.props)
     return (
       <Row id="index">
         <Col md={5} >

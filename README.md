@@ -11,5 +11,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
   - 初始化的时候按照请求数据深层格式初始化一下
   - 每一层对象渲染的时候条件判断渲染
 5.图片适应的问题max-width
+6.在使用react-redux后，实现首页的tab跳转，match.params.id   
+  - shouldComponentUpdate 监视tabs变化发现有刷新问题
+  - componentDidUpdate 改用生命周期函数解决
+7. 使用withRouter让index的内部组件Nav返回一个高阶组件，给this.props注入（history，location， macth）三个对象，通过
+location.pathname变化，来实现Nav选中效果。
 
 

@@ -1,22 +1,22 @@
 import React from 'react';
 import { Card, Avatar } from 'antd';
 import { Link } from 'react-router-dom'
-import Axios from 'axios'
 import TxtTag from '../../component/tags/tags'
 import ReplyList from '../../component/replylist/replylist'
 import './detail.scss'
+import {bindActionCreators} from 'redux'
+import { connect } from 'react-redux'
+import fetchDetail from '../../actions/detail'
 
 class Detail extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: {},
-      loading: true
+      
     }
   }
   render() {
-    console.log(this.state.data)
-    let data = this.state.data
+    let data = this.props.data
     let { author } = data
     const artTitle = (
       <div> 
@@ -53,23 +53,24 @@ class Detail extends React.Component {
       </div>
     );
   }
-  getDetailData() {
-    let tempId = this.props.match.params.id
-    Axios.get(`https://cnodejs.org/api/v1/topic/${tempId}`)
-      .then(res => {
-        this.setState({
-          data: res.data.data,
-          loading: false
-        })
-      })
-      .catch(err => {
-        console.log(err)
-      })
-  }
 
   componentDidMount() {
-    this.getDetailData()
+    let tempId = this.props.match.params.id
+    this.props.fetchDetail(tempId)
   }
 }
 
-export default Detail;
+const mapStateToProps = (state) =>{
+  return {
+    data: state.detail.data
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({ fetchDetail },dispatch)
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Detail);

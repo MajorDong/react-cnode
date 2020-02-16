@@ -1,25 +1,28 @@
 
-function user(state={
-  data:[],
-  isloading:true
-},action) {
-  switch(action.type){
-    case 'START_FETCH_LIST':
+function user(state = {
+ data:{
+  loginname: '',
+  avatar_url: '',
+  score: '',
+  create_at: '',
+  recent_topics: [],
+  recent_replies: []
+ }
+}, action) {
+  switch (action.type) {
+    case 'START_USER':
       return {
         ...state,
-        isloading: true,
       }
-    case 'FETCH_LIST_SUCCESS':
+    case 'FETCH_USER_SUCCESS':
       return {
         ...state,
-        isloading:false,
-        data: action.payload.dataList
+        data:action.payload.userData
       }
-     case 'FETCH_LIST_FAILED':
-       return {
-         ...state,
-         isloading: false
-       } 
+    case 'FETCH_LIST_FAILED':
+      return {
+        ...state
+      }
     default:
       return state
   }

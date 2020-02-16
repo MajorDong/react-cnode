@@ -14,7 +14,7 @@ function RouteIndex(){
       </Route>
       <Route path="/index/:id" component={Index} />
       <Route path="/detail/:id" component={Detail} />
-      <Route path="/user" component={User} />
+      <Route path="/user/:loginname" component={User} />
       <Route path="/about" component={About} />
       <Route path="/book" component={Book} />
     </Switch>

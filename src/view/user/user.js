@@ -1,8 +1,11 @@
 import React from 'react';
 import { Avatar, Row, Col, Card} from 'antd'
-import data from './data'
 import UserList from '../../component/userlist/userlist'
 import './user.scss'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux';
+import fetchUser from '../../actions/user'
+
 
 const dataStyle = {
   color: '#448ef7'
@@ -15,7 +18,7 @@ class User extends React.Component {
      }
   }
   render() { 
-    let {loginname, avatar_url, score, create_at} = data.data
+    let {loginname, avatar_url, score, create_at} = this.props.userData
     return ( 
       <div className="userWrap">
         <div className="userInfo">
@@ -30,17 +33,31 @@ class User extends React.Component {
           type="inner"
           title="最近创建话题"
         >
-          <UserList data={data.data.recent_topics}/>
+          <UserList data={this.props.userData.recent_topics}/>
         </Card>
         <Card
           type="inner"
           title="最近回复的话题"
         >
-          <UserList data={data.data.recent_replies}/>
+          <UserList data={this.props.userData.recent_replies}/>
         </Card>
       </div>
      );
   }
+  componentDidMount(){
+    let name = this.props.match.params.loginname
+    this.props.fetchUser(name)
+  }
 }
- 
-export default User;
+const mapStateToProps = (state) =>{
+  return{
+    userData:state.user.data
+  }
+}
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({ fetchUser},dispatch)
+}
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(User);
