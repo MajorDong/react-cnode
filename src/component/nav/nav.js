@@ -25,7 +25,7 @@ class Nav extends React.Component {
       selectedKeys={[this.state.now]}
     >
       <Menu.Item key="index">
-        <Link to="/index/all"><Icon type="home" />首页</Link>
+        <Link to="/index/all&page=1"><Icon type="home" />首页</Link>
       </Menu.Item>
       <Menu.Item key="book">
         <Link to="/book"><Icon type="book" />教程</Link>
