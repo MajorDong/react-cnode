@@ -12,7 +12,7 @@ function RouteIndex(){
       <Route path="/" exact>
         <Redirect to="/index/all&page=1" />
       </Route>
-      <Route path="/index/:id&:page" component={Index} />
+      <Route path="/index/:id&:page" exact component={Index} />
       <Route path="/detail/:id" component={Detail} />
       <Route path="/user/:loginname" component={User} />
       <Route path="/about" component={About} />

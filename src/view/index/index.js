@@ -11,10 +11,18 @@ class Index extends React.Component {
   constructor(props) {
     super(props);
     this.handleOnChange = this.handleOnChange.bind(this)
+    let page = this.getPage()
     this.state = {
-      defaultPage: 1,
-      currentPage: 1
+      //props的计算属性会根据props变化，让分页器的数字跟着路由变化，解决刷新分页器回到1的问题
+      //说明在antd中current的优先极大于defaultCurrent
+      currentPage: page 
     }
+  }
+  //计算属性
+  getPage(){
+    let pageStr = this.props.match.params.page.split('=')[1]
+    let page = +pageStr
+    return page
   }
   render() {
     return (
@@ -49,7 +57,7 @@ class Index extends React.Component {
             <div className="paginWrap">
               <Pagination
                 showQuickJumper
-                defaultCurrent={this.state.defaultPage}
+                defaultCurrent={1}
                 total={200}
                 current={this.state.currentPage}
                 onChange={this.handleOnChange} />
@@ -65,24 +73,22 @@ class Index extends React.Component {
     }))
     let tab = this.props.match.params.id
     this.props.history.push(`/index/${tab}&page=${pageNumber}`)
+    this.props.fetchList(tab,pageNumber)
   }
   componentDidMount() {
     let tab = this.props.match.params.id
-    this.props.fetchList(tab, this.state.defaultPage)
+    let pageStr = this.props.match.params.page.split('=')[1]
+    let page = +pageStr
+    this.props.fetchList(tab, page)
   }
   componentDidUpdate(prevProps) {
     let tab = this.props.match.params.id
-    let page = this.props.match.params.page
     //处理tab切换
     if (tab !== prevProps.match.params.id) {
-      this.props.fetchList(tab, this.state.defaultPage)
-      this.setState((state) => ({
-        currentPage: state.defaultPage
+      this.props.fetchList(tab, 1)
+      this.setState(() => ({
+        currentPage: 1
       }))
-    }
-    //处理page切换
-    if (page !== prevProps.match.params.page){
-      this.props.fetchList(tab,this.state.currentPage)
     }
   }
 }

@@ -16,5 +16,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
   - componentDidUpdate 改用生命周期函数解决
 7. 使用withRouter让index的内部组件Nav返回一个高阶组件，给this.props注入（history，location， macth）三个对象，通过
 location.pathname变化，来实现Nav选中效果。
+8. 在使用pagination组件时，有刷新bug重写handleOnChange函数和Router，通过重定向路由和生命周期函数componetDidMount,componentDidUpdate来解决，让路由参数来控制整个index页面数据的获取。
 
 
