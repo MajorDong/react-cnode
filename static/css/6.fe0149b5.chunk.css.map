@@ -1,0 +1,1 @@
+{"version":3,"sources":["detail.scss"],"names":[],"mappings":"AAAA,YACE,SAAU,CACV,aAAc","file":"6.fe0149b5.chunk.css","sourcesContent":[".detailWrap{\n  width: 80%;\n  margin: 0 auto;\n}\n\n"]}
