@@ -80,6 +80,7 @@ class Index extends React.Component {
     let pageStr = this.props.match.params.page.split('=')[1]
     let page = +pageStr
     this.props.fetchList(tab, page)
+    console.log(this.props)
   }
   componentDidUpdate(prevProps) {
     let tab = this.props.match.params.id
